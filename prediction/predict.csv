@@ -1,0 +1,36 @@
+start_frame,end_frame,label_pred,env_factors_pred
+0,60,Normal,[]
+30,90,Normal,[]
+60,120,Normal,[]
+90,150,Normal,[]
+120,180,Normal,[]
+150,210,Normal,[]
+180,240,Autistic Trigger,['stranger_present']
+210,270,Autistic Trigger,['stranger_present']
+240,300,Autistic Trigger,['stranger_present']
+270,330,Autistic Trigger,['stranger_present']
+300,360,Autistic Trigger,['music']
+330,390,Autistic Trigger,"['music', 'youtube_playing']"
+360,420,Autistic Trigger,"['music', 'youtube_playing']"
+390,450,Autistic Trigger,['stranger_present']
+420,480,Autistic Trigger,['stranger_present']
+450,510,Autistic Trigger,['stranger_present']
+480,540,Autistic Trigger,"['stranger_present', 'youtube_playing']"
+510,570,Autistic Trigger,"['stranger_present', 'youtube_playing']"
+540,600,Autistic Trigger,['stranger_present']
+570,630,Autistic Trigger,"['birthday_song', 'stranger_present']"
+600,660,Autistic Trigger,['stranger_present']
+630,690,Autistic Trigger,['stranger_present']
+660,720,Autistic Trigger,['stranger_present']
+690,750,Autistic Trigger,['stranger_present']
+720,780,Autistic Trigger,['stranger_present']
+750,810,Autistic Trigger,['stranger_present']
+780,840,Autistic Trigger,['stranger_present']
+810,870,Normal,[]
+840,900,Normal,[]
+870,930,Normal,[]
+900,960,Normal,[]
+930,990,Normal,[]
+960,1020,Autistic Trigger,['stranger_present']
+990,1050,Autistic Trigger,"['music', 'stranger_present', 'youtube_playing']"
+1020,1080,Autistic Trigger,"['music', 'stranger_present', 'youtube_playing']"

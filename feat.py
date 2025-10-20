@@ -108,7 +108,7 @@ def extract_features(win):
 
     return feats
 
-input_files = glob.glob("output csv/*.csv")
+input_files = glob.glob("output csv/landmarks_test*.csv")
 
 for input_csv in input_files:
     print(f"Processing {input_csv}")

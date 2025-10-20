@@ -2,7 +2,7 @@ import os, glob
 import cv2
 import pandas as pd
 
-input_video = "vid3.mp4"
+input_video = "sambhavi4.mp4"
 video_name, _ = os.path.splitext(input_video)
 features_csv = f"features/features_landmarks_{video_name}.csv"
 
@@ -27,7 +27,7 @@ for i, row in df.iterrows():
     cv2.destroyAllWindows()
     print(f"Window {i} ({start}-{end})")
 
-    key = input("Label this clip (t=trigger, n=normal, s=skip): ").strip().lower()
+    key = input("Label this clip (0=normal, 1=trigger, s=skip): ").strip().lower()
     if key == "0":
         df.at[i, "label"] = "0"
     elif key == "1":

@@ -4,7 +4,7 @@ import pandas as pd
 import os, glob
 
 os.makedirs("output csv", exist_ok=True)
-video_files = glob.glob("input/*.mp4")
+video_files = glob.glob("input/test*.mp4")
 video_names = [os.path.splitext(os.path.basename(f))[0] for f in video_files]
 
 mp_pose = mp.solutions.pose

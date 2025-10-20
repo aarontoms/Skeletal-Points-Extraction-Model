@@ -1,27 +1,29 @@
 import pandas as pd
 import joblib
 
-clf = joblib.load("rf_model.pkl")
+model = joblib.load("multi_rf_model.pkl")
+mlb = joblib.load("env_label_encoder.pkl")
 
-df = pd.read_csv("features test/features_landmarks_aut2 - Trim2.csv")
+input_csv = "features/features_landmarks_test.csv"
+df = pd.read_csv(input_csv)
 
-if "label" in df.columns:
-    X = df.drop("label", axis=1)
-    y = df["label"]
-else:
-    X = df
-    y = None
+frame_cols = df[["start_frame", "end_frame"]].copy()
 
-preds = clf.predict(X)
+X = df.drop(columns=["start_frame", "end_frame"])
 
-print("Predictions per window:")
-print(preds)
+y_pred = model.predict(X)
 
-final = max(set(preds), key=list(preds).count)
-print("\nFinal classification:", final)
+label_pred = y_pred[:, 0]
+env_pred = y_pred[:, 1:]
 
-if y is not None:
-    from sklearn.metrics import classification_report, confusion_matrix
-    print("\nEvaluation:")
-    print(classification_report(y, preds))
-    print(confusion_matrix(y, preds))
+env_labels = mlb.inverse_transform(env_pred)
+
+result = pd.DataFrame({
+    "start_frame": frame_cols["start_frame"],
+    "end_frame": frame_cols["end_frame"],
+    "label_pred": ["Autistic Trigger" if x == 1 else "Normal" for x in label_pred],
+    "env_factors_pred": [str(list(e)) for e in env_labels]
+})
+
+result.to_csv("prediction/predict.csv", index=False)
+print("✅ Saved predictions to prediction/predict.csv")
