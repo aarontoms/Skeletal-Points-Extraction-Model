@@ -28,10 +28,10 @@ for i, row in df.iterrows():
     print(f"Window {i} ({start}-{end})")
 
     key = input("Label this clip (t=trigger, n=normal, s=skip): ").strip().lower()
-    if key == "t":
-        df.at[i, "label"] = "trigger"
-    elif key == "n":
-        df.at[i, "label"] = "normal"
+    if key == "0":
+        df.at[i, "label"] = "0"
+    elif key == "1":
+        df.at[i, "label"] = "1"
     elif key == "s":
         df.at[i, "label"] = None
 
