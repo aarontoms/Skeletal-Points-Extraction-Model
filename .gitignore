@@ -2,3 +2,4 @@
 .env
 skeleton.py
 *.pkl
+*test*
