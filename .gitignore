@@ -3,3 +3,8 @@
 skeleton.py
 *.pkl
 *test*
+backend
+requirements.txt
+*.tflite
+*.json
+saved_model
