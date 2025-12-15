@@ -2,8 +2,9 @@ import cv2
 import pandas as pd
 import ast
 
-video_path = "input/test.mp4"
-pred_csv = "prediction/predict.csv"
+video_name = "test2"
+video_path = f"input/{video_name}.mp4"
+pred_csv = f"predictions/predict_{video_name}.csv"
 
 pred_df = pd.read_csv(pred_csv)
 
@@ -13,7 +14,7 @@ cap = cv2.VideoCapture(video_path)
 fps = int(cap.get(cv2.CAP_PROP_FPS))
 
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter("output_overlay.mp4", fourcc, fps, 
+out = cv2.VideoWriter(f"overlay/{video_name}.mp4", fourcc, fps, 
                       (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
 
 frame_idx = 0
@@ -46,4 +47,4 @@ cap.release()
 out.release()
 cv2.destroyAllWindows()
 
-print("✅ Overlay video saved as output_overlay.mp4")
+print(f"✅ Overlay video saved as overlay/{video_name}.mp4")

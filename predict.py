@@ -4,7 +4,8 @@ import joblib
 model = joblib.load("multi_rf_model.pkl")
 mlb = joblib.load("env_label_encoder.pkl")
 
-input_csv = "features/features_landmarks_test.csv"
+video_name = "test3"
+input_csv = f"features/features_landmarks_{video_name}.csv"
 df = pd.read_csv(input_csv)
 
 frame_cols = df[["start_frame", "end_frame"]].copy()
@@ -25,5 +26,5 @@ result = pd.DataFrame({
     "env_factors_pred": [str(list(e)) for e in env_labels]
 })
 
-result.to_csv("prediction/predict.csv", index=False)
-print("✅ Saved predictions to prediction/predict.csv")
+result.to_csv(f"predictions/predict_{video_name}.csv", index=False)
+print(f"✅ Saved predictions to predictions/predict_{video_name}.csv")
