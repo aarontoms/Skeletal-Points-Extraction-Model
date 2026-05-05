@@ -75,12 +75,15 @@ python concat.py
 ## 5. Training: `train.py`
 
 **Purpose:**  
-Trains a model using the combined labeled data.
+Trains a MultiOutputClassifier (Random Forest) for both Autism Trigger classification and Environmental Factors prediction. Evaluates the model and generates visualizations.
 
 - **Input File:**  
-    `combined labeled/all_labeled.csv`
-- **Output File:**  
-    `rf_model.pkl`
+    `combined labeled/all_labeled3.csv`
+- **Output Files:**  
+    - `multi_rf_model.pkl` (Trained model)
+    - `env_label_encoder.pkl` (Label encoder for environmental factors)
+    - `metrics.json` (Classification report)
+    - Various visualizations (`cm_*.png`, `sample_tree.png`, `feature_importance.png`)
 
 **Usage:**  
 ```bash
@@ -92,14 +95,15 @@ python train.py
 ## 6. Prediction: `predict.py`
 
 **Purpose:**  
-Makes predictions on new data using the trained model.
+Uses the trained multi-output model to predict both the "Autistic Trigger" label and environmental factors for each frame of new data.
 
-- **Input Folder:**  
-    `data/feat/` (or your new feature data)
-- **Model File:**  
-    `models/model.pkl`
+- **Input File:**  
+    `features/features_landmarks_<vidname>.csv` (or your new feature data)
+- **Model Files:**  
+    - `multi_rf_model.pkl`
+    - `env_label_encoder.pkl`
 - **Output Folder:**  
-    `data/predictions/`
+    `predictions/predict_<vidname>.csv`
 
 **Usage:**  
 ```bash
